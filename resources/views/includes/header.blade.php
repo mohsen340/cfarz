@@ -363,6 +363,8 @@
 
 
 
+
+                @if(auth()->user()->role == 'admin')
                 <li class="header-right">
                         <span style="color: white;font-size: 25px;text-align: center">فروشگاه</span>
                 </li>
@@ -419,6 +421,8 @@
 
                     </ul>
                 </li>
+
+                @endif
 
 
 
