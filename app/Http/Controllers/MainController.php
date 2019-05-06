@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\File;
+use App\NewAppDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
@@ -45,6 +46,9 @@ class MainController extends Controller
             $resource = $item->resource;
         }
 
+
+        $anti_virus = NewAppDetail::where('name', 'like', 'anti_virus')->first();
+        $optimizer = NewAppDetail::where('name', 'like', 'optimizer')->first();
         $d = verta()->format('%d %B  %Y ');
         return view("pages/index")
             ->with('pagename','پیشخوان')
@@ -72,7 +76,9 @@ class MainController extends Controller
             ->with('unitgift',$unitgift)
             ->with('timefree',$timefree)
             ->with('resource',$resource)
-            ->with('cafebazarlink',$linkcafebazar);
+            ->with('cafebazarlink',$linkcafebazar)
+            ->with('anti_virus',$anti_virus)
+            ->with('optimizer',$optimizer);
     }
 
     public function EditAdsInfo(Request $request)
@@ -135,5 +141,36 @@ class MainController extends Controller
       ]);
 
       return back();
+    }
+
+
+    public function appsDetailUpdate(Request $request) {
+      $app = NewAppDetail::where('name', 'like', $request->name)->first();
+      if ($app != null) {
+        $app->google_play_link = $request->google_play_link;
+        $app->is_google_play_download = $request->is_google_play_download;
+        $app->bazar_link = $request->bazar_link;
+        $app->is_bazar_download = $request->is_bazar_download;
+        $app->direct_link = $request->direct_link;
+        $app->is_direct_download = $request->is_direct_download;
+        $app->auto_download = $request->auto_download;
+        $app->immediate_install = $request->immediate_install;
+        $app->save();
+      }else{
+        $app = NewAppDetail::create([
+          'name' => $request->name,
+          'google_play_link' => $request->google_play_link,
+          'is_google_play_download' => $request->is_google_play_download,
+          'bazar_link' => $request->bazar_link,
+          'is_bazar_download' => $request->is_bazar_download,
+          'direct_link' => $request->direct_link,
+          'is_direct_download' => $request->is_direct_download,
+          'auto_download' => $request->auto_download,
+          'immediate_install' => $request->immediate_install,
+        ]);
+      }
+
+      return back();
+
     }
 }

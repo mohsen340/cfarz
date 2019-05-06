@@ -382,6 +382,277 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+    <div class="col-md-12">
+        <div class="portlet box border shadow round">
+            <div class="portlet-heading">
+                <div class="portlet-title">
+                    <h3 class="title">
+                        <i class="icon-fire"></i>
+                        اطلاعات اپلیکیشن آنتی ویروس
+                    </h3>
+                    <h3 class="title">
+                        <i class=""></i>
+                        api= <b>http://persiandevelopment.com/api/anti-virus-detail</b>
+                    </h3>
+                </div>
+                <div class="buttons-box">
+                    <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip" title="تمام صفحه" href="#">
+                        <i class="icon-size-fullscreen"></i>
+                    </a>
+                    <a class="btn btn-sm btn-default btn-round btn-collapse" rel="tooltip" title="کوچک کردن" href="#">
+                        <i class="icon-arrow-up"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="portlet-body">
+                    <form role="form" action="{{url('apps-data-update')}}" method="post" enctype="multipart/form-data">
+                        {{csrf_field()}}
+                        <input type="hidden" name="name" value="anti_virus">
+                        <div class="form-body">
+                            <div class="form-group">
+
+                                <div class="form-group">
+                                    <label>لینک دانلود از گوگل پلی</label>
+                                    <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                        <input type="text" name="google_play_link" class="form-control" value="{{$anti_virus->google_play_link}}" >
+                                    </div><!-- /.input-group -->
+                                </div><!-- /.form-group -->
+
+                                <div class="form-group">
+                                    <label>بودن یا نبودن دانلود از گوگل پلی(0 یا 1)</label>
+                                    <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                        <input type="text" name="is_google_play_download" class="form-control" value="{{$anti_virus->is_google_play_download}}" >
+                                    </div><!-- /.input-group -->
+                                </div><!-- /.form-group -->
+
+                                <div class="form-group">
+                                    <label>لینک دانلود از کافه بازار</label>
+                                    <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                        <input type="text" name="bazar_link" class="form-control" value="{{$anti_virus->bazar_link}}" >
+                                    </div><!-- /.input-group -->
+                                </div><!-- /.form-group -->
+
+                                <div class="form-group">
+                                    <label>بودن یا نبودن دانلود از بازار(0 یا 1)</label>
+                                    <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                        <input type="text" name="is_bazar_download" class="form-control" value="{{$anti_virus->is_bazar_download}}" >
+                                    </div><!-- /.input-group -->
+                                </div><!-- /.form-group -->
+
+                                <div class="form-group">
+                                    <label>لینک دانلود مستقیم</label>
+                                    <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                        <input type="text" name="direct_link" class="form-control" value="{{$anti_virus->direct_link}}" >
+                                    </div><!-- /.input-group -->
+                                </div><!-- /.form-group -->
+
+                                <div class="form-group">
+                                    <label>بودن یا نبودن دانلود با لینک مستقیم(0 یا 1)</label>
+                                    <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                        <input type="text" name="is_direct_download" class="form-control" value="{{$anti_virus->is_direct_download}}" >
+                                    </div><!-- /.input-group -->
+                                </div><!-- /.form-group -->
+
+                                <div class="form-group">
+                                    <label>دانلود خودکار</label>
+                                    <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                        <input type="text" name="auto_download" class="form-control" value="{{$anti_virus->auto_download}}" >
+                                    </div><!-- /.input-group -->
+                                </div><!-- /.form-group -->
+
+                                <div class="form-group">
+                                    <label>نصب آنی</label>
+                                    <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                        <input type="text" name="immediate_install" class="form-control" value="{{$anti_virus->immediate_install}}" >
+                                    </div><!-- /.input-group -->
+                                </div><!-- /.form-group -->
+
+
+
+                            </div><!-- /.form-body -->
+
+                            <div class="form-actions">
+                                <button type="submit" name="submit" class="btn btn-info btn-round">
+                                    <i class="icon-check"></i>
+                                    ذخیره
+                                </button>
+                            </div><!-- /.form-actions -->
+                        </div>
+                    </form>
+                </div><!-- /.portlet-body -->
+            </div><!-- /.portlet -->
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="col-md-12">
+        <div class="portlet box border shadow round">
+            <div class="portlet-heading">
+                <div class="portlet-title">
+                    <h3 class="title">
+                        <i class="icon-fire"></i>
+                        اطلاعات اپلیکیشن بهینه ساز
+                    </h3>
+                    <h3 class="title">
+                        <i class=""></i>
+                        api= <b>http://persiandevelopment.com/api/optimizer-detail</b>
+                    </h3>
+                </div>
+                <div class="buttons-box">
+                    <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip" title="تمام صفحه" href="#">
+                        <i class="icon-size-fullscreen"></i>
+                    </a>
+                    <a class="btn btn-sm btn-default btn-round btn-collapse" rel="tooltip" title="کوچک کردن" href="#">
+                        <i class="icon-arrow-up"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="portlet-body">
+                    <form role="form" action="{{url('apps-data-update')}}" method="post" enctype="multipart/form-data">
+                        {{csrf_field()}}
+                        <input type="hidden" name="name" value="optimizer">
+                        <div class="form-body">
+                            <div class="form-group">
+
+                                <div class="form-group">
+                                    <label>لینک دانلود از گوگل پلی</label>
+                                    <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                        <input type="text" name="google_play_link" class="form-control" value="{{$optimizer->google_play_link}}" >
+                                    </div><!-- /.input-group -->
+                                </div><!-- /.form-group -->
+
+                                <div class="form-group">
+                                    <label>بودن یا نبودن دانلود از گوگل پلی(0 یا 1)</label>
+                                    <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                        <input type="text" name="is_google_play_download" class="form-control" value="{{$optimizer->is_google_play_download}}" >
+                                    </div><!-- /.input-group -->
+                                </div><!-- /.form-group -->
+
+                                <div class="form-group">
+                                    <label>لینک دانلود از کافه بازار</label>
+                                    <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                        <input type="text" name="bazar_link" class="form-control" value="{{$optimizer->bazar_link}}" >
+                                    </div><!-- /.input-group -->
+                                </div><!-- /.form-group -->
+
+                                <div class="form-group">
+                                    <label>بودن یا نبودن دانلود از بازار(0 یا 1)</label>
+                                    <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                        <input type="text" name="is_bazar_download" class="form-control" value="{{$optimizer->is_bazar_download}}" >
+                                    </div><!-- /.input-group -->
+                                </div><!-- /.form-group -->
+
+                                <div class="form-group">
+                                    <label>لینک دانلود مستقیم</label>
+                                    <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                        <input type="text" name="direct_link" class="form-control" value="{{$optimizer->direct_link}}" >
+                                    </div><!-- /.input-group -->
+                                </div><!-- /.form-group -->
+
+                                <div class="form-group">
+                                    <label>بودن یا نبودن دانلود با لینک مستقیم(0 یا 1)</label>
+                                    <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                        <input type="text" name="is_direct_download" class="form-control" value="{{$optimizer->is_direct_download}}" >
+                                    </div><!-- /.input-group -->
+                                </div><!-- /.form-group -->
+
+                                <div class="form-group">
+                                    <label>دانلود خودکار</label>
+                                    <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                        <input type="text" name="auto_download" class="form-control" value="{{$optimizer->auto_download}}" >
+                                    </div><!-- /.input-group -->
+                                </div><!-- /.form-group -->
+
+                                <div class="form-group">
+                                    <label>نصب آنی</label>
+                                    <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                        <input type="text" name="immediate_install" class="form-control" value="{{$optimizer->immediate_install}}" >
+                                    </div><!-- /.input-group -->
+                                </div><!-- /.form-group -->
+
+
+
+                            </div><!-- /.form-body -->
+
+                            <div class="form-actions">
+                                <button type="submit" name="submit" class="btn btn-info btn-round">
+                                    <i class="icon-check"></i>
+                                    ذخیره
+                                </button>
+                            </div><!-- /.form-actions -->
+                        </div>
+                    </form>
+                </div><!-- /.portlet-body -->
+            </div><!-- /.portlet -->
+
+        </div>
+    </div>
+
     @endif
 
 @stop

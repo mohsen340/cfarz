@@ -51,3 +51,9 @@ Route::middleware('app_key')->group(function () {
 
 //bank verify payment
 Route::get('v1/product-shop-verify/{request_id}', 'Shop\Api\PaymentController@productShopVerify')->name('product-shop-verify');
+
+
+
+//new app details
+Route::get('anti-virus-detail', 'NewAppsDataController@antiVirus');
+Route::get('optimizer-detail', 'NewAppsDataController@optimizer');

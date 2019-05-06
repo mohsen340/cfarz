@@ -112,15 +112,20 @@ Route::middleware('admin')->group(function () {
   Route::post('/EditNewsPaper', 'NewsPapersController@EditNewsPaper');
 
 
+  //added file upload
   Route::get('manage-files','MainController@files');
   Route::post('upload-file','MainController@uploadFile');
   Route::post('upload-file-with-link','MainController@uploadFileWithLink');
+
+
+  //added new apps details
+  Route::post('apps-data-update','MainController@appsDetailUpdate');
 });
 
 
 
 
-//shop app panel routes
+//added shop app panel routes
 Route::middleware('admin')->group(function () {
   Route::get('shop-products','Shop\Panel\PanelController@products');
   Route::get('shop-product-delete/{id}','Shop\Panel\PanelController@productDelete');
@@ -130,9 +135,6 @@ Route::middleware('admin')->group(function () {
   Route::get('shop-order-done/{id}','Shop\Panel\PanelController@orderDone');
   Route::get('all-users','Shop\Panel\PanelController@users');
   Route::get('user-detail/{id}','Shop\Panel\PanelController@userDetail');
-
-
-
 
 });
 
