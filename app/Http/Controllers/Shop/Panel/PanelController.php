@@ -39,6 +39,7 @@ class PanelController extends Controller
       }
 
       $product = SProduct::create([
+        'type' => $request->type,
         'title' => $request->title,
         'image_url' => URL::to('/') .'/'. $data,
         'description' => $request->description,

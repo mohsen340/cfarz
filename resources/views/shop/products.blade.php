@@ -26,6 +26,26 @@
                             <div class="form-body">
                                 <div class="form-group">
 
+
+
+                                    <div class="form-group">
+                                        <label>نوع محصول</label>
+                                        <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                            <select class="form-control" name="type">
+                                                <option value="like">لایک اینستاگرام</option>
+                                                <option value="follower">فالور اینستاگرام</option>
+                                                <option value="member">ممبر کانال تلگرام</option>
+                                            </select>
+                                        </div><!-- /.input-group -->
+                                    </div><!-- /.form-group -->
+
+
+
+
+
                                     <div class="form-group">
                                         <label>نام محصول</label>
                                         <div class="input-group round">
@@ -132,6 +152,7 @@
                                 <thead>
                                 <tr>
                                     <th>ردیف</th>
+                                    <th>نوع</th>
                                     <th>نام</th>
                                     <th>تصویر</th>
                                     <th>توضیحات</th>
@@ -144,6 +165,7 @@
                                 @foreach($products as $product)
                                     <tr>
                                         <td>{{++$i}}</td>
+                                        <td> <h4 class="title">{{$product->type}} </h4></td>
                                         <td> <h4 class="title">{{$product->title}} </h4></td>
                                         <td><img src="{{$product->image_url}}" height="35" class="rounded float-right" ></td>
                                         <td> <h4 class="desc">{{$product->description}} </h4></td>

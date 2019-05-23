@@ -41,7 +41,7 @@ Route::middleware('app_key')->group(function () {
   });
 
 
-  Route::get('v1/products', 'Shop\Api\ApplicationDataController@products');
+  Route::get('v1/products/{type}', 'Shop\Api\ApplicationDataController@products');
   Route::get('v1/product/{id}', 'Shop\Api\ApplicationDataController@product');
   Route::get('v1/orders', 'Shop\Api\ApplicationDataController@orders')->middleware('auth:api');
 
