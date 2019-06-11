@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>کافه ارز</title>
+        <title> توسعه دهندگان پارس</title>
 
         <!-- Fonts -->
         <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
@@ -68,9 +68,18 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
-                    کافه ارز
+                    توسعه دهندگان پارس
+                    <br>
+                    <br>
+
                 </div>
-                <br/>
+                <div class="content ">
+                    خرید فالور و ممبر درون برنامه
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
                 <div class="links">
                     @if (Auth::check())
                         <a href="{{ url('/dashboard') }}">پنل مدیریت</a>

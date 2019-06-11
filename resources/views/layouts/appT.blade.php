@@ -32,8 +32,9 @@
         <div class="row">
 
             <div class="col-md-12">
-                <div class="logo-con m-t-10 m-b-10">
-                    <img src="{!! asset('images/logo.png') !!}" class="center-block img-responsive">
+                <div class="logo-con m-t-10 m-b-10" style="text-align: center">
+                    {{--<img src="{!! asset('images/logo.png') !!}" class="center-block img-responsive">--}}
+                    ورود به حساب کاربری
                 </div><!-- /.logo-con -->
                 <hr>
                 @yield('content')
