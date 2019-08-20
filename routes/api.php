@@ -47,11 +47,17 @@ Route::middleware('app_key')->group(function () {
 
   Route::post('v1/product-shop', 'Shop\Api\PaymentController@productShop')->middleware('auth:api');
 
+
+
 });
 
 //bank verify payment
 Route::get('v1/product-shop-verify/{request_id}', 'Shop\Api\PaymentController@productShopVerify')->name('product-shop-verify');
 
+//test deep link
+Route::get('test/deep-link', function (){
+  return "<a href='intent://persiandevelopment.com#Intent;scheme=http;package=push.instagramfarsi.celler;end'>بازگشت به برنامه</a>";
+});
 
 
 //new app details
