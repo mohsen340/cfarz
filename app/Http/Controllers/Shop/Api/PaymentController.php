@@ -96,8 +96,8 @@ class PaymentController extends Controller {
       $description = ms::PAYMENT_SUCCESS;
       $RefID = $payment->receipt;
 
-      return "<a href='intent://persiandevelopment.com#Intent;scheme=http;package=push.instagramfarsi.celler;end'>بازگشت به برنامه</a>";
-//      return view('shop.paymentSuccess', compact(['description', 'price', 'RefID', 'buy_code']));
+//      return "<a href='intent://persiandevelopment.com#Intent;scheme=http;package=push.instagramfarsi.celler;end'>بازگشت به برنامه</a>";
+      return view('shop.paymentSuccess', compact(['description', 'price', 'RefID', 'buy_code']));
 
 
     } else {

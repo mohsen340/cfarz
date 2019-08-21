@@ -140,3 +140,16 @@ Route::middleware('admin')->group(function () {
 
 
 
+Route::get('/test1', function (){
+  $description = 'desc';
+  $price = '343434';
+  $RefID = 'RefID';
+  $buy_code = 'buy_code';
+  return view('shop.paymentSuccess', compact(['description', 'price', 'RefID', 'buy_code']));
+
+
+
+  return view('shop.paymentFailed', compact('description'));
+});
+
+
