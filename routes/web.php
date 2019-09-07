@@ -117,6 +117,11 @@ Route::middleware('admin')->group(function () {
   Route::post('upload-file','MainController@uploadFile');
   Route::post('upload-file-with-link','MainController@uploadFileWithLink');
 
+  //added file upload
+  Route::get('manage-videos','MainController@videos');
+  Route::post('upload-video','MainController@uploadVideo');
+  Route::post('upload-video-with-link','MainController@uploadVideoWithLink');
+
 
   //added new apps details
   Route::post('apps-data-update','MainController@appsDetailUpdate');
@@ -128,6 +133,8 @@ Route::middleware('admin')->group(function () {
 //added shop app panel routes
 Route::middleware('admin')->group(function () {
   Route::get('shop-products','Shop\Panel\PanelController@products');
+  Route::get('shop-products/detail/{id}','Shop\Panel\PanelController@detail');
+  Route::post('shop-products/update','Shop\Panel\PanelController@update');
   Route::get('shop-product-delete/{id}','Shop\Panel\PanelController@productDelete');
   Route::post('shop-product-insert','Shop\Panel\PanelController@productInsert');
 
@@ -140,16 +147,6 @@ Route::middleware('admin')->group(function () {
 
 
 
-Route::get('/test1', function (){
-  $description = 'desc';
-  $price = '343434';
-  $RefID = 'RefID';
-  $buy_code = 'buy_code';
-  return view('shop.paymentSuccess', compact(['description', 'price', 'RefID', 'buy_code']));
 
-
-
-  return view('shop.paymentFailed', compact('description'));
-});
 
 

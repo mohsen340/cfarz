@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\File;
 use App\NewAppDetail;
+use App\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
@@ -100,6 +101,8 @@ class MainController extends Controller
     }
 
 
+
+
     public function uploadFile(Request $request){
       if($request->hasfile('filename'))
       {
@@ -142,6 +145,60 @@ class MainController extends Controller
 
       return back();
     }
+
+
+
+  public function videos(){
+    $videos = Video::orderBy('id', 'desc')->paginate(30);
+    $d = verta()->format('%d %B  %Y ');
+    return view("pages/videos")
+      ->with('pagename','مدیریت ویدیوها')
+      ->with('pageaddress','/')
+      ->with('date',$d)
+      ->with('videos',$videos);
+  }
+
+  public function uploadVideo(Request $request){
+    if($request->hasfile('filename'))
+    {
+      $file = $request->file('filename')[0];
+      $name = $file->getClientOriginalName();
+      $random = mt_rand(10,100);
+      $file->move('files/uploads/'.$random, $name);
+      $data = 'files/uploads/'.$random .'/'. $name;
+    }
+
+    $file = Video::create([
+      'name' => $request->name,
+      'link' => URL::to('/') .'/'. $data
+    ]);
+
+    return back();
+  }
+
+  public function uploadVideoWithLink(Request $request){
+    $url = $request->link;
+    $file = file_get_contents($url);
+    $rand = mt_rand(10,100);
+    $name = basename($url); // to get file name
+//      $ext = pathinfo($url, PATHINFO_EXTENSION); // to get extension
+//      $name2 =pathinfo($url, PATHINFO_FILENAME); //file name without extension
+    $fileName = $name;
+    $path = 'files/uploads/'.$rand.'/'.$fileName;
+    $path = 'files/uploads/'.$fileName;
+    file_put_contents($path, $file);
+
+//      $file->move('files/uploads/'.$rand, $fileName);
+//      $data = 'files/uploads/'.$rand .'/'. $fileName;
+
+    $file = Video::create([
+      'name' => $request->name,
+      'link' => URL::to('/') .'/'. $path
+    ]);
+
+    return back();
+  }
+
 
 
     public function appsDetailUpdate(Request $request) {

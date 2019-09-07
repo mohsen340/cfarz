@@ -357,6 +357,13 @@
                             </a>
                         </li>
 
+                        {{--<li>--}}
+                            {{--<a href="{{url("manage-videos")}}" class="">--}}
+                                {{--<i class="icon-cloud-upload"></i>--}}
+                                {{--<span>مدیریت ویدیوها</span>--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+
 
                     </ul>
                 </li>

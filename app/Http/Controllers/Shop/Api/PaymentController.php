@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Crypt;
 use Zarinpal\Drivers\SoapDriver;
 
 class PaymentController extends Controller {
+
   public function productShop(Request $request) {
     $product_id = $request->product_id;
     $phone = $request->phone;

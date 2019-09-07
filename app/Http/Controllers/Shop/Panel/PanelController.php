@@ -27,6 +27,38 @@ class PanelController extends Controller
       return back();
     }
 
+    public function detail($id){
+      $product = SProduct::find($id);
+      $d = verta()->format('%d %B  %Y ');
+      return view('shop.product-detail')
+        ->with('pagename','مدیریت محصولات')
+        ->with('pageaddress','/shop-products/detail/'.$id)
+        ->with('date',$d)
+        ->with('product',$product);
+    }
+
+    public function update(Request $request){
+      $product = SProduct::find($request->id);
+      $data = null;
+      if($request->hasfile('filename'))
+      {
+        $file = $request->file('filename')[0];
+        $name = $file->getClientOriginalName();
+        $random = mt_rand(10,100);
+        $file->move('files/uploads/'.$random, $name);
+        $data = 'files/uploads/'.$random .'/'. $name;
+      }
+
+      $product->type = $request->type;
+      $product->title = $request->title;
+      $product->description = $request->description;
+      $product->price = $request->price;
+      if($data != null) $product->image_url = URL::to('/') .'/'. $data;
+      $product->save();
+
+      return back();
+    }
+
     public function productInsert(Request $request){
       $data = null;
       if($request->hasfile('filename'))

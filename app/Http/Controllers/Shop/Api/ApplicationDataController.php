@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 class ApplicationDataController extends Controller
 {
 
+  public function __construct() {
+    $this->middleware('auth', ['only'=>['orders']]);
+  }
 
   public function products($type){
     $products = SProduct::where('type', 'like', $type)->orderBy('id', 'desc')->get();
