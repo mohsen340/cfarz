@@ -15,7 +15,7 @@ class ApplicationDataController extends Controller
   }
 
   public function products($type){
-    $products = SProduct::where('type', 'like', $type)->orderBy('id', 'desc')->get();
+    $products = SProduct::where('type', 'like', $type)->orderBy('priority', 'desc')->orderBy('id', 'desc')->get();
     return ws::r(1, $products);
   }
 

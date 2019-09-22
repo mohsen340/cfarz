@@ -53,6 +53,7 @@ class PanelController extends Controller
       $product->title = $request->title;
       $product->description = $request->description;
       $product->price = $request->price;
+      $product->priority = $request->priority;
       if($data != null) $product->image_url = URL::to('/') .'/'. $data;
       $product->save();
 
@@ -76,6 +77,7 @@ class PanelController extends Controller
         'image_url' => URL::to('/') .'/'. $data,
         'description' => $request->description,
         'price' => $request->price,
+        'priority' => $request->priority,
       ]);
 
       return back();

@@ -93,6 +93,18 @@
                                     </div><!-- /.form-group -->
 
 
+                                    <div class="form-group">
+                                        <label>اولویت نمایش محصول(هرچه بیشتر باشد محصول بالاتر دیده میشود)</label>
+                                        <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                            <input type="number" name="priority" class="form-control" value="{{$product->priority}}" placeholder="قیمت محصول وارد شود(تومان)">
+                                        </div><!-- /.input-group -->
+                                    </div><!-- /.form-group -->
+
+
+
 
 
 

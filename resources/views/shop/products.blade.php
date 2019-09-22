@@ -90,6 +90,16 @@
                                         </div><!-- /.input-group -->
                                     </div><!-- /.form-group -->
 
+                                    <div class="form-group">
+                                        <label>اولویت نمایش(هر چه بیشتر باشد بالاتر دیده میشود)</label>
+                                        <div class="input-group round">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-info"></i>
+                                                </span>
+                                            <input type="number" name="priority" class="form-control" value="0" required placeholder="اولویت نمایش محصول وارد شود">
+                                        </div><!-- /.input-group -->
+                                    </div><!-- /.form-group -->
+
 
 
 
@@ -157,6 +167,7 @@
                                     <th>تصویر</th>
                                     <th>توضیحات</th>
                                     <th>قیمت(تومان)</th>
+                                    <th>اولویت نمایش</th>
                                     <th>ویرایش</th>
                                     <th>حذف</th>
                                 </tr>
@@ -171,6 +182,7 @@
                                         <td><img src="{{$product->image_url}}" height="35" class="rounded float-right" ></td>
                                         <td> <h4 class="desc">{{$product->description}} </h4></td>
                                         <td> <h4 class="title">{{number_format($product->price)}} </h4></td>
+                                        <td> <h4 class="title">{{$product->priority}} </h4></td>
                                         <td> <a class="btn-primary" style="padding: 2px" href="{{url('shop-products/detail', $product->id)}}">ویرایش</a></td>
                                         <td> <a class="btn-danger" style="padding: 2px" href="{{url('shop-product-delete', $product->id)}}">حذف</a></td>
                                     </tr>
