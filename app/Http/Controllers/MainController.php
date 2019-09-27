@@ -150,9 +150,17 @@ class MainController extends Controller
 
   public function videos(){
     $videos = Video::orderBy('id', 'desc')->paginate(30);
+    foreach ($videos as $video){
+      if ($this->does_url_exists($video->link)){
+        $video->downloaded = 1;
+      }else{
+        $video->downloaded = 0;
+      }
+    }
+
     $d = verta()->format('%d %B  %Y ');
     return view("pages/videos")
-      ->with('pagename','مدیریت ویدیوها')
+      ->with('pagename','مدیریت فایلهای سرور دانلود')
       ->with('pageaddress','/')
       ->with('date',$d)
       ->with('videos',$videos);
@@ -177,26 +185,53 @@ class MainController extends Controller
   }
 
   public function uploadVideoWithLink(Request $request){
+//    $server_main_url = 'http://localhost:8080/video-upload';
+    $server_main_url = 'https://dl.persianroid.com';
+    $server_request_url = $server_main_url.'/upload.php';
+    $key = 'jekjJIERUu343u43434343hehjfdhjfe';
     $url = $request->link;
-    $file = file_get_contents($url);
-    $rand = mt_rand(10,100);
-    $name = basename($url); // to get file name
-//      $ext = pathinfo($url, PATHINFO_EXTENSION); // to get extension
-//      $name2 =pathinfo($url, PATHINFO_FILENAME); //file name without extension
-    $fileName = $name;
-    $path = 'files/uploads/'.$rand.'/'.$fileName;
-    $path = 'files/uploads/'.$fileName;
-    file_put_contents($path, $file);
+    if (!$this->does_url_exists($url)){
+      return back()->with('error', 'فایل مورد نظر وجود ندارد(url وارد شده اشتباه است)');
+    }
 
-//      $file->move('files/uploads/'.$rand, $fileName);
-//      $data = 'files/uploads/'.$rand .'/'. $fileName;
+    $year = date('Y');
+    $month = date('m');
+    $day = date('d');
+    $rand = mt_rand(10,100);
+    $name = $rand. basename($url);
+    $download_url = $server_main_url.'/'.'uploads/'.$year.'/'.$month.'/'.$day.'/'.$name;
 
     $file = Video::create([
       'name' => $request->name,
-      'link' => URL::to('/') .'/'. $path
+      'link' => $download_url
     ]);
 
-    return back();
+
+    //send request to download server
+    $fields = [
+      'key' => $key,
+      'url' => $url,
+      'year' => $year,
+      'month' => $month,
+      'day' => $day,
+      'name' => $name,
+    ];
+
+    $get_url = $server_request_url.'?';
+    foreach ($fields as $key=>$value){
+      $get_url .= $key . '=' . $value . '&';
+    }
+
+    file_get_contents($get_url);
+//    $ch = curl_init();
+//    curl_setopt($ch, CURLOPT_URL, $get_url);
+//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//    $output = curl_exec($ch);
+//    curl_close($ch);
+//    return dd($output);
+
+
+    return back()->with('success', 'فایل روی سرور دانلود آپلود شد');
   }
 
 
@@ -230,4 +265,15 @@ class MainController extends Controller
       return back();
 
     }
+
+
+
+  private function does_url_exists($url) {
+    $filename= $url;
+    $file_headers = @get_headers($filename);
+    if (stripos($file_headers[0],"404 Not Found") >0  || (stripos($file_headers[0], "302 Found") > 0 && stripos($file_headers[7],"404 Not Found") > 0)) {
+      return false;
+    }
+    return true;
+  }
 }

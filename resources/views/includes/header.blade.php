@@ -360,7 +360,7 @@
                         <li>
                             <a href="{{url("manage-videos")}}" class="">
                                 <i class="icon-cloud-upload"></i>
-                                <span>مدیریت ویدیوها</span>
+                                <span>مدیریت فایلهای سرور دانلود</span>
                             </a>
                         </li>
 
