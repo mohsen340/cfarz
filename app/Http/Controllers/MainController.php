@@ -187,7 +187,8 @@ class MainController extends Controller
   public function uploadVideoWithLink(Request $request){
 //    $server_main_url = 'http://localhost:8080/video-upload';
     $server_main_url = 'https://dl.persianroid.com';
-    $server_request_url = $server_main_url.'/upload.php';
+    $server_main_url2 = 'http://dl.persianroid.com';
+    $server_request_url = $server_main_url2.'/upload.php';
     $key = 'jekjJIERUu343u43434343hehjfdhjfe';
     $url = $request->link;
     if (!$this->does_url_exists($url)){
@@ -210,11 +211,11 @@ class MainController extends Controller
     //send request to download server
     $fields = [
       'key' => $key,
-      'url' => $url,
+      'url' => urlencode($url),
       'year' => $year,
-      'month' => $month,
+      'month' => $month,g
       'day' => $day,
-      'name' => $name,
+      'name' => urlencode($name),
     ];
 
     $get_url = $server_request_url.'?';
@@ -222,13 +223,13 @@ class MainController extends Controller
       $get_url .= $key . '=' . $value . '&';
     }
 
-    file_get_contents($get_url);
-//    $ch = curl_init();
-//    curl_setopt($ch, CURLOPT_URL, $get_url);
-//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//    $output = curl_exec($ch);
-//    curl_close($ch);
-//    return dd($output);
+    $curl_handle=curl_init();
+    curl_setopt($curl_handle, CURLOPT_URL, $get_url);
+    curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 2);
+    curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl_handle, CURLOPT_USERAGENT, ' Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0');
+    $query = curl_exec($curl_handle);
+    curl_close($curl_handle);
 
 
     return back()->with('success', 'فایل روی سرور دانلود آپلود شد');
