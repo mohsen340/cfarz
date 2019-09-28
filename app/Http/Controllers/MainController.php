@@ -213,7 +213,7 @@ class MainController extends Controller
       'key' => $key,
       'url' => urlencode($url),
       'year' => $year,
-      'month' => $month,g
+      'month' => $month,
       'day' => $day,
       'name' => urlencode($name),
     ];
